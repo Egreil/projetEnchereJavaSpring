@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layouts/layout :: frag-layout(titre=~{:: title},
+													contenu=~{:: main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<main> 
+	<div>
+		<p data-th-text="${utilisateur.pseudo}"></p>
+		<p data-th-text="${utilisateur.nom}"></p>
+		<p data-th-text="${utilisateur.prenom}"></p>
+		<p data-th-text="${utilisateur.email}"></p>
+		<p data-th-text="${utilisateur.telephone}"></p>
+		<p data-th-text="${utilisateur.rue}"></p>
+		<p data-th-text="${utilisateur.codePostal}"></p>
+		<p data-th-text="${utilisateur.ville}"></p>
+		<p data-th-text="${utilisateur.credit}"></p>
+	</div>
+	<button><a href="/profil/updateProfil">Modifier mes données</a></button>
+	
+	<table>
+		<thead>
+			<tr>
+			<th>Nom article</th>
+			<th>Prix Initial</th>
+			<th>Etat vente</th>
+			<th>Date début enchères</th>
+			<th>Date fin enchères</th>
+			<th>Modifier l'article</th>
+			<th>Supprimer l'article</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr data-th-each="item:${articles}">
+		<td data-th-text="${item.nomArticle}">
+		<td data-th-text="${item.prixInitial}">
+		<td data-th-text="${item.etatVente}">
+		<td data-th-text="${item.dateDebutEncheres}">
+		<td data-th-text="${item.dateFinEncheres}"> 
+		<td><a data-th-href="@{/profil/modification(noArticle=${item.noArticle})}">Modifier</a></td>
+	    <td><a data-th-href="@{/profil/supprimer(noArticle=${item.noArticle})}">Supprimer</a></td>
+		</tr>
+		</tbody>
+	</table>
+<div class=contact>	
+<div class=row>
+<form  action="/profil/ajouterArticle" data-th-object="${article}" method=post >
+  <div class=contact>
+   <h3>Mettre en enchere</h3>
+	<div>
+	<label for="nom">Nom de l'article</label>
+	<input type="text" id="nom" data-th-field="*{nomArticle}" placeholder="Nom">
+	</div>
+	
+	<div>
+	<label for="description">Description</label>
+	<input type="text" id="description" data-th-field="*{description}" placeholder="Description">
+	</div>
+	
+	<div>	
+	<label for="dateDebut">Date de début des encheres</label>
+	<input type="date" id="dateFin" data-th-field="*{dateDebutEncheres}" placeholder="Date">
+	</div>
+	
+	<div>
+	<label for="dateFin">Date de Fin des encheres</label>
+	<input type="date" id="dateFin" data-th-field="*{dateFinEncheres}" placeholder="Date">
+	</div>
+	
+	<div>
+	<label for="prixInitial">Prix de mise en vente</label>
+	<input type="number" id="prixInitial" data-th-field="*{prixInitial}" placeholder="Prix de mise en vente > 0">
+    </div>
+	
+	<label for="categorie">Catégorie</label>
+	<select id="categorie" data-th-field="*{categorie}" >
+		<option data-th-each="cat:${categories}"
+		data-th-text="${cat.libelle}"
+		data-th-value="${cat.noCategorie}">
+	</select>
+<button type="submit"> Mettre en enchere</button>
+</div>
+</form>
+</div>
+</div>
+
+
+</main>
+</body>
+</html>

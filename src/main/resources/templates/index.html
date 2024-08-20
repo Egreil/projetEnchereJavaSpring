@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layouts/layout :: frag-layout(titre=~{:: title},
+													contenu=~{:: main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<header>
+</header>
+<main>
+<h1>Encheres.com</h1>
+<div data-th-each="item:${articles}"><img>
+<p data-th-text="${item.nomArticle}"></p>
+<p data-th-text="${item.prixInitial}"></p>
+<p data-th-text="${item.dateFinEnchere}"></p>
+<p>
+</div>
+</main>
+
+</body>
+</html>

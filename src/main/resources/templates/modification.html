@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layouts/layout :: frag-layout(titre=~{:: title},
+													contenu=~{:: main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<main>
+	<form action="/profil/modification" data-th-object="${article}" method=post >
+	<div hidden>
+		<input type="text" id="nom" data-th-field="*{noArticle}" >
+		<input type="text" id="nom" data-th-field="*{etatVente}">
+	</div>
+	<label for="nom">Nom de l'article</label>
+	<input type="text" id="nom" data-th-field="*{nomArticle}" placeholder="Nom">
+	<label for="description">Description</label>
+	<input type="text" id="description" data-th-field="*{description}" placeholder="Description">
+			
+	<label for="dateDebut">Date de début de l'enchere</label>
+	<input type="date" id="dateFin" data-th-field="*{dateDebutEncheres}" placeholder="Date">
+	
+	<label for="dateFin">Date de début de l'enchere</label>
+	<input type="date" id="dateFin" data-th-field="*{dateFinEncheres}" placeholder="Date">
+	
+	<label for="prixInitial">Prix de mise en vente</label>
+	<input type="number" id="prixInitial" data-th-field="*{prixInitial}" placeholder="Prix de mise en vente > 0">
+
+	
+	<label for="categorie">Catégorie</label>
+	<select id="categorie" data-th-field="*{categorie}" >
+		<option data-th-each="cat:${categories}"
+		data-th-text="${cat.libelle}"
+		data-th-value="${cat.noCategorie}">
+	</select>
+<button type="submit"> Modifier l'article</button>
+</form>
+</main>
+</html>

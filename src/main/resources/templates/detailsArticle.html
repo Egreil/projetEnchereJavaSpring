@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layouts/layout :: frag-layout(titre=~{:: title},
+													contenu=~{:: main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<main>
+		<ul >
+		Vendeur
+		<li><a data-th-href="@{/profil(noUtilisateur=${article.vendeur.noUtilisateur})}" data-th-text="${article.vendeur.pseudo}"></a></li>
+		<li data-th-text="${article.nomArticle}">
+		<li data-th-text="${article.description}">
+		<li data-th-text="${article.prixInitial}"> 
+		<li data-th-text="${article.prixVente}">
+		<li data-th-text="${article.etatVente}"> 
+		<li data-th-text="${article.dateDebutEncheres}">
+		<li data-th-text="${article.dateFinEncheres}">
+	</ul>
+	<form sec:authorize="isAuthenticated()" action="/enchere/article/encherir" method="post">
+	<label for="newEnchere"> Valeur de votre enchere</label>
+	<input type="numeric" id="newEnchere"  name="montantEnchere"></input>
+	<input data-th-value="${article.noArticle}" name="noArticle" hidden></input>
+	<button type="submit">Enchérir</button>
+	</form>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layouts/layout :: frag-layout(titre=~{:: title},
+													contenu=~{:: main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<main>
+	<h1> Mot de Passe oublié</h1>
+		
+			<h2 data-th-text="${message}"></h2>
+		<form action="/login/motDePasseOublie" method="post" >
+				<label for="idUser">Veuillez saisir votre adresse mail svp</label>
+				<input id="idUser" type="text" name="mail">
+				<button type="submit">Renouveler le mot de passe</button>
+		</form>
+</main>
+
+</body>
+</html>

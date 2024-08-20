@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layouts/layout :: frag-layout(titre=~{:: title},
+													contenu=~{:: main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main>
+
+			
+			<h2>Modification des données personnelles</h2>
+			<form action="updateProfil"  method="post" data-th-object="${utilisateur}">
+			<div>
+			<label for="telephone">Telephone</label>
+			<input id="telephone" type="text"  data-th-field="*{telephone}">
+			 <ul>
+			    	<li class="error" data-th-errors="*{telephone}" ></li> 
+			    </ul>
+			</div>
+			
+			<div>
+			
+			<label for="rue">Rue</label>
+			<input id="rue" type="text" data-th-field="*{rue}">
+			<ul>
+				<li class="error" data-th-errors="*{rue}" ></li> 
+			</ul>
+			
+			</div>
+			<div>
+			
+			<label for="codePostal">CodePostal</label>
+			<input id="codePostal" type="text" data-th-field="*{codePostal}">
+			<ul>
+			    	<li class="error" data-th-errors="*{codePostal}" ></li> 
+			    </ul>
+			</div>
+			
+			<div>
+			
+			<label for="ville">Ville</label>
+			<input id="ville" type="text" data-th-field="*{ville}">
+			<ul>
+				   <li class="error" data-th-errors="*{ville}" ></li> 
+				</ul>
+			</div>
+			<div hidden>
+			<input type="text"  data-th-field="*{pseudo}">
+			<input type="text"  data-th-field="*{nom}">
+			<input type="text"  data-th-field="*{prenom}">
+			<input type="text"  data-th-field="*{email}">
+			<input type="text"  data-th-field="*{credit}">
+			<input type="text"  data-th-field="*{motDePasse}">
+			</div>
+			<div>
+						<h2>Modification du mot de passe</h2>
+			
+			<label for="mdp">Ancien mot de passe</label>
+			<input id="mdp" type="password" placeholder="ancien mot de passe" name="ancienMotDePasse">
+			<ul>
+			    	<li class="error" data-th-errors="*{motDePasse}" ></li> 
+			    </ul>
+			<label for="mdp">Nouveau mot de passe</label>
+			<input id="mdp" type="password" placeholder="nouveau mot de passe" name="nouveauMotDePasse">
+			<ul>
+			    	<li class="error" data-th-errors="*{motDePasse}" ></li> 
+			    </ul>  
+			</div>
+			
+			<button type="submit"> Valider les modifications</button>
+			</form>
+	</main>
+
+</body>
+</html>

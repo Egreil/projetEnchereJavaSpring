@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layouts/layout :: frag-layout(titre=~{:: title},
+													contenu=~{:: main})}">
+<head>
+<meta charset="UTF-8">
+<title>Creation utilisateur</title>
+</head>
+    <main>
+      <h1>Creation d'un utilisateur</h1>
+    
+        <form action="/inscription/creer" 
+		method="post"
+		data-th-object="${utilisateur}">
+	         
+	         <div class="error" 
+				data-th-each="err : ${#fields.errors('global')}" data-th-text="${err}">
+			</div>
+	         
+	        <div>
+	        <label for="pseudo">Pseudo</label>
+			<input id="pseudo" type="text" placeholder="pseudo" data-th-field="*{pseudo}">
+			<ul>
+				<li class="error" data-th-errors="*{pseudo}" >
+				</li> 
+				</ul>
+			 </div>
+			
+	        <label for="nom">Nom</label>
+			<input id="nom" type="text" placeholder="nom" data-th-field="*{nom}">
+			<ul>
+					<li class="error" data-th-errors="*{nom}" ></li>
+				</ul> 
+			</div>
+			
+			<div> 
+			
+			<label for="prenom">Prénom</label>
+			<input id="prenom" type="text" placeholder="prenom" data-th-field="*{prenom}">
+			<ul>
+					<li class="error" data-th-errors="*{prenom}" ></li> 
+				</ul>
+			</div>
+			
+			<div>
+				
+			<label for="email">Email</label>
+			<input id="email" type="text" placeholder="email" data-th-field="*{email}">
+			<ul>
+				 	<li class="error" data-th-errors="*{email}" ></li>
+				 </ul> 
+			</div>
+				
+			<div>
+			
+			<label for="mdp">Mot de passe</label>
+			<input id="mdp" type="password" placeholder="mot de passe" data-th-field="*{motDePasse}">
+			<ul>
+			    	<li class="error" data-th-errors="*{motDePasse}" ></li> 
+			    </ul>
+			</div>
+			
+			<div>
+				
+			<label for="telephone">Telephone</label>
+			<input id="telephone" type="text" placeholder="telephone" data-th-field="*{telephone}">
+			 <ul>
+			    	<li class="error" data-th-errors="*{telephone}" ></li> 
+			    </ul>
+			</div>
+			
+			<div>
+			
+			<label for="rue">Rue</label>
+			<input id="rue" type="text" placeholder="rue" data-th-field="*{rue}">
+			<ul>
+				<li class="error" data-th-errors="*{rue}" ></li> 
+			</ul>
+			
+			</div>
+			<div>
+			
+			<label for="codePostal">CodePostal</label>
+			<input id="codePostal" type="text" placeholder="codePostal" data-th-field="*{codePostal}">
+			<ul>
+			    	<li class="error" data-th-errors="*{codePostal}" ></li> 
+			    </ul>
+			</div>
+			
+			<div>
+			
+			<label for="ville">Ville</label>
+			<input id="ville" type="text" placeholder="ville" data-th-field="*{ville}">
+			<ul>
+				   <li class="error" data-th-errors="*{ville}" ></li> 
+				</ul>
+			</div>
+			
+			<button type="submit">Ajouter</button>
+			
+	  </form>
+    </main>
+</html>

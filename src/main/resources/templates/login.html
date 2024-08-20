@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layouts/layout :: frag-layout(titre=~{:: title},
+													contenu=~{:: main})}">
+<head>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<main>
+
+   	<form data-th-action="@{/login}" method="post">
+   	  <div class="error" 
+			data-th-each="err : ${#fields.errors('global')}" data-th-text="${err}"></div>
+		<ul class="flex-outer">
+			<li>
+			<!-- le for permet de lié le text identifiant au champ input
+			ainsi lorsqu'une personne mal voyante passe sur l'input elle
+			entedant que cet input est reelié à l'identifiant -->
+				<label for="idUser">Identifiant</label>
+				<input id="idUser" type="text" name="username">
+			</li>
+		
+			<li>
+				<label for="idPass">Mot de passe</label>
+				<input id="idPass" type="password" name="password">
+			</li>
+			<li>
+				<label for="remember-me">Remember Me</label>
+	        	<input type="checkbox" name="remember-me" />
+			</li>
+			<li>
+				<button type="submit"> Se connecter</button>
+			</li>
+		</ul>
+	</form>
+				
+				<a href="/login/motDePasseOublie"> Mot de passe Oublié?</a>
+			
+	
+</main>
+</html>

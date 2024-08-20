@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+data-th-fragment="frag-layout(titre,contenu)">
+<head>
+<meta charset="UTF-8">
+<title data-th-replace="${titre}"></title>
+<link rel="stylesheet" data-th-href="@{/css/general.css}">
+</head>
+<body>
+<header>
+	
+	<img th:src="@{/images/01.png}">
+    <h1 id="nav-title">Encheres.com</h1>
+	<div sec:authorize="isAuthenticated()">
+		<span sec:authentication="name">Bob</span>
+		<span sec:authentication="principal.authorities">[ROLE_USER, sssROLE_ADMIN]</span>
+	</div>
+	<nav>
+		<ul>
+			<li ><a href="/">Enchères</a></li>
+			<li sec:authorize="hasAuthority('ADMIN')"><a href="/admin">Admin</a></li>
+			<li sec:authorize="hasAuthority('USER')"><a data-th-href="@{/profil(noUtilisateur=0)}">Profil</a></li>
+			<li data-th-if="${!#authorization.expression('isAuthenticated()')}"><a href="/login">Connexion</a></li>
+			<li data-th-if="${!#authorization.expression('isAuthenticated()')}"><a href="/inscription">Inscrivez-vous</a></li>
+			<li data-th-if="${#authorization.expression('isAuthenticated()')}"><a href="/logout">Deconnexion</a></li>
+			<li><a href="/?language=fr"><img class="image" alt="Francais" src="/images/French.webp"></a></li> 
+		    <li><a href="/?language=en"><img class="image" alt="English" src="/images/English.webp"></a></li> 
+		</ul>
+	</nav>
+	</header>
+
+<main data-th-replace="${contenu}"></main>
+	<footer>
+		<p>ENI - TOUS DROITS RESERVES</p>
+	</footer>
+</body>
+</html>
